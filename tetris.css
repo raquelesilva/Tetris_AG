@@ -37,29 +37,38 @@ h1{
     top: 50px;
 }
 
+#players{
+    background-color: salmon;
+    border: 0px;
+    position: absolute;
+    right: 454px;
+    bottom: 280px;
+    width: 100px;
+}
+
 #start{
     background-color: salmon;
     border: 0px;
     position: absolute;
-    right: 464px;
+    right: 454px;
     bottom: 240px;
-    width: 90px;
+    width: 100px;
 }
 
 #pause{
     background-color: salmon;
     border: 0px;
     position: absolute;
-    right: 464px;
+    right: 454px;
     bottom: 200px;
-    width: 90px;
+    width: 100px;
 }
 
 #exit{
     background-color: salmon;
     border: 0px;
     position: absolute;
-    right: 464px;
+    right: 454px;
     bottom: 160px;
-    width: 90px;
+    width: 100px;
 }
