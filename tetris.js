@@ -5,7 +5,7 @@ const scoreElement = document.getElementById("score");
 const canvas2 = document.querySelector("#c2");
 const ctx2 = canvas2.getContext("2d");
 
-ctx.scale(20, 20);
+context.scale(20, 20);
 
 document.getElementById("start").addEventListener("click", function resetGame() {
     ctx1.clearRect(0, 0, canvas1.width, canvas1.height)
