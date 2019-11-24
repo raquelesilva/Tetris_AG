@@ -21,15 +21,9 @@ h1{
     border: solid 4px #B2F302;
     background: black;
     position: absolute;
-<<<<<<< HEAD
-    right: 500px;
-    width:20rem;
-    height: 50rem;
-=======
     right: 600px;
     width:300px;
     height: 500px;
->>>>>>> 1053fbdb1df52de8fdbf0102db7fcf303e6dc4c7
     top: 50px;
 }
 

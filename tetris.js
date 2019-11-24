@@ -5,15 +5,12 @@ const scoreElement = document.getElementById("score");
 const canvas2 = document.querySelector("#c2");
 const ctx2 = canvas2.getContext("2d");
 
-context.scale(20, 20);
+ctx.scale(20, 20);
 
 document.getElementById("start").addEventListener("click", function resetGame() {
     ctx1.clearRect(0, 0, canvas1.width, canvas1.height)
 })
 
-<<<<<<< HEAD
-
-=======
 let b = new Array();
 function creatPiece() {
     b.push(new piece(x, y, vel, color, r))
@@ -38,4 +35,3 @@ function render() {
     window.requestAnimationFrame(render);
 }
 render();  //start animate
->>>>>>> 1053fbdb1df52de8fdbf0102db7fcf303e6dc4c7
