@@ -1,7 +1,7 @@
-@font-face {
+/*/@font-face {
     font-family: Tetris2;
     src: url(/Tetris2.ttf);
-}
+}*/
 
 html,body{
     background-color: #4B0082;
@@ -21,9 +21,15 @@ h1{
     border: solid 4px #B2F302;
     background: black;
     position: absolute;
+<<<<<<< HEAD
     right: 500px;
+    width:20rem;
+    height: 50rem;
+=======
+    right: 600px;
     width:300px;
     height: 500px;
+>>>>>>> 1053fbdb1df52de8fdbf0102db7fcf303e6dc4c7
     top: 50px;
 }
 
@@ -31,32 +37,35 @@ h1{
     border: solid 4px #B2F302;
     background: black;
     position: absolute;
-    right: 304px;
+    right: 404px;
     width: 150px;
     height: 150px;
     top: 50px;
 }
 
-#reset{
+#start{
     background-color: salmon;
     border: 0px;
     position: absolute;
-    right: 376px;
+    right: 464px;
     bottom: 240px;
-}
-
-#exit{
-    background-color: salmon;
-    border: 0px;
-    position: absolute;
-    right: 428px;
-    bottom: 160px;
+    width: 90px;
 }
 
 #pause{
     background-color: salmon;
     border: 0px;
     position: absolute;
-    right: 412px;
+    right: 464px;
     bottom: 200px;
+    width: 90px;
+}
+
+#exit{
+    background-color: salmon;
+    border: 0px;
+    position: absolute;
+    right: 464px;
+    bottom: 160px;
+    width: 90px;
 }
