@@ -13,40 +13,38 @@ document.getElementById("start").addEventListener("click", function resetGame() 
     ctx1.clearRect(0, 0, canvas1.width, canvas1.height)
 })
 
-const row = 20;
-const col = column = 10;
-const sq = squareSize = 50;
-const vacant = "black"; // color of an empty square
+const ROW = 22;
+const COL = COLUMN = 12;
+const SQ = squareSize = 50;
+const VACANT = "black"; // color of an empty square
 
 // draw a square
 function drawSquare(x,y,color){
     ctx1.fillStyle = color;
-    ctx1.fillRect(x*sq,y*sq,sq,sq);
+    ctx1.fillRect(x*SQ,y*SQ,SQ,SQ);
 
     ctx1.strokeStyle = "white";
-    ctx1.strokeRect(x*sq,y*sq,sq,sq);
+    ctx1.strokeRect(x*SQ,y*SQ,SQ,SQ);
 }
 
 // create the board
 
 let board = [];
-for( r = 0; r <row; r++){
+for( r = 0; r <ROW; r++){
     board[r] = [];
-    for(c = 0; c < col; c++){
-        board[r][c] = vacant;
+    for(c = 0; c < COL; c++){
+        board[r][c] = VACANT;
     }
 }
 
 // draw the board
 function drawBoard(){
-    for( r = 0; r <row; r++){
-        for(c = 0; c < col; c++){
+    for( r = 0; r <ROW; r++){
+        for(c = 0; c < COL; c++){
             drawSquare(c,r,board[r][c]);
         }
     }
 }
 
 drawBoard();
-
-
 
