@@ -13,8 +13,8 @@ document.getElementById("start").addEventListener("click", function resetGame() 
     ctx1.clearRect(0, 0, canvas1.width, canvas1.height)
 })
 
-const row = 22;
-const col = column = 12;
+const row = 20;
+const col = column = 10;
 const sq = squareSize = 50;
 const vacant = "black"; // color of an empty square
 
@@ -47,40 +47,3 @@ function drawBoard() {
 }
 
 drawBoard();
-
-
-
-//setup as many pieces as wanted
-let b = new Array();
-function creatPiece() {
-    //random position (inside Canvas)
-    let x = r + Math.random() * (W - 2 * r);
-    let y = -r;
-    //random direction
-    let vel = 1000;
-
-    b.push(new Ball(x, y, vel))
-}
-
-creatPiece();
-
-function render() {
-    //fade Canvas
-    ctx.fillStyle = "rgba(255,255,255,0.25)"
-    ctx.fillRect(0, 0, W, H);
-
-    //draw
-    b.forEach(function (piece) {
-        piece.draw();
-    });
-
-    b[b.length - 1].update();
-    if (b[b.length - 1].stop) {
-        creatPiece();
-    }
-
-    //new frame
-    window.requestAnimationFrame(render);
-}
-render();  //start animate
-
