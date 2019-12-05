@@ -15,12 +15,13 @@ document.getElementById("start").addEventListener("click", function resetGame() 
 
 const row = 20;
 const col = column = 10;
-const sq = squareSize = 50;
+const sq = squareSize = 35;
 const vacant = "black"; // color of an empty square
 let x = 2;
 let y = -1;
 let frameCounter = 0;
 const T = 1;
+let rotCounter = 1;
 let rnd;
 
 window.addEventListener('keydown', ArrowPressed);
@@ -32,7 +33,7 @@ function drawSquare(x, y, color) {
     ctx1.fillStyle = color;
     ctx1.fillRect(x * sq, y * sq, sq, sq);
 
-    ctx1.strokeStyle = "white";
+    ctx1.strokeStyle = "black";
     ctx1.strokeRect(x * sq, y * sq, sq, sq);
 }
 
@@ -98,19 +99,66 @@ function drawPiece(x, y, color, rnd) {
     if (rnd == T) {
 
 
-        ctx.fillStyle = color
-        ctx.strokeStyle = "white";
-        ctx.strokeRect(x * sq, y * sq, sq, sq);
-        ctx.fillRect(x * sq, y * sq, sq, sq);
-        ctx.strokeRect((x - 1) * sq, (y - 1) * sq, sq, sq);
-        ctx.fillRect((x - 1) * sq, (y - 1) * sq, sq, sq);
-        ctx.strokeRect(x * sq, (y - 1) * sq, sq, sq);
-        ctx.fillRect(x * sq, (y - 1) * sq, sq, sq);
-        ctx.strokeRect((x + 1) * sq, (y - 1) * sq, sq, sq);
-        ctx.fillRect((x + 1) * sq, (y - 1) * sq, sq, sq);
+        ctx1.fillStyle = color
+        ctx1.strokeStyle = "white";
+        ctx1.strokeRect(x * sq, y * sq, sq, sq);
+        ctx1.fillRect(x * sq, y * sq, sq, sq);
+        ctx1.strokeRect((x - 1) * sq, (y - 1) * sq, sq, sq);
+        ctx1.fillRect((x - 1) * sq, (y - 1) * sq, sq, sq);
+        ctx1.strokeRect(x * sq, (y - 1) * sq, sq, sq);
+        ctx1.fillRect(x * sq, (y - 1) * sq, sq, sq);
+        ctx1.strokeRect((x + 1) * sq, (y - 1) * sq, sq, sq);
+        ctx1.fillRect((x + 1) * sq, (y - 1) * sq, sq, sq);
+    }
+
+    if (rnd == 2) {
+        
+        
+
+        ctx1.fillStyle = color
+        ctx1.strokeStyle = "white";
+        ctx1.strokeRect(x * sq, y * sq, sq, sq);
+        ctx1.fillRect(x * sq, y * sq, sq, sq);
+        ctx1.strokeRect((x - 1) * sq, (y - 1) * sq, sq, sq);
+        ctx1.fillRect((x - 1) * sq, (y - 1) * sq, sq, sq);
+        ctx1.strokeRect(x * sq, (y - 1) * sq, sq, sq);
+        ctx1.fillRect(x * sq, (y - 1) * sq, sq, sq);
+        ctx1.strokeRect((x) * sq, (y - 2) * sq, sq, sq);
+        ctx1.fillRect((x) * sq, (y - 2) * sq, sq, sq);
+    }
+
+    if (rnd == 3) {
+        
+        
+
+        ctx1.fillStyle = color
+        ctx1.strokeStyle = "white";
+        ctx1.strokeRect(x * sq, (y  - 1) * sq, sq, sq);
+        ctx1.fillRect((x) * sq, (y - 1) * sq, sq, sq);
+        ctx1.strokeRect((x - 1) * sq, (y - 1) * sq, sq, sq);
+        ctx1.fillRect((x - 1) * sq, (y - 1) * sq, sq, sq);
+        ctx1.strokeRect((x + 1) * sq, (y - 1) * sq, sq, sq);
+        ctx1.fillRect((x + 1) * sq, (y - 1) * sq, sq, sq);
+        ctx1.strokeRect((x) * sq, (y - 2) * sq, sq, sq);
+        ctx1.fillRect((x) * sq, (y - 2) * sq, sq, sq);
+    }
+
+    if (rnd == 4) {
+        
+        
+
+        ctx1.fillStyle = color
+        ctx1.strokeStyle = "white";
+        ctx1.strokeRect(x * sq, (y  - 1) * sq, sq, sq);
+        ctx1.fillRect((x) * sq, (y - 1) * sq, sq, sq);
+        ctx1.strokeRect((x) * sq, (y) * sq, sq, sq);
+        ctx1.fillRect((x) * sq, (y) * sq, sq, sq);
+        ctx1.strokeRect((x + 1) * sq, (y - 1) * sq, sq, sq);
+        ctx1.fillRect((x + 1) * sq, (y - 1) * sq, sq, sq);
+        ctx1.strokeRect((x) * sq, (y - 2) * sq, sq, sq);
+        ctx1.fillRect((x) * sq, (y - 2) * sq, sq, sq);
     }
 }
-
 //MOVE PIECE TO THE RIGHT AND LEFT
 
 
@@ -121,6 +169,17 @@ function ArrowPressed(e) {
     if (e.key == 'ArrowLeft' && y < 19 && x > 1) {
         x--;
     }
+    if (e.key == 'ArrowUp') {
+    
+        if (rotCounter == 4) {
+            
+            rotCounter = 0;
+        }
+        rotCounter++;
+        rnd = rotCounter;
+        console.log("rnd" + " " + rnd)
+        console.log("rotCounter" + " " + rotCounter)
+    }
 }
 
 function ArrowReleased(e) {
@@ -129,6 +188,9 @@ function ArrowReleased(e) {
     }
     if (e.key == 'ArrowLeft') {
 
+    }
+    if (e.key == 'ArrowUp') {
+        
     }
 }
 
