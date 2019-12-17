@@ -15,7 +15,7 @@ document.getElementById("start").addEventListener("click", function resetGame() 
 
 const row = 20;
 const col = column = 10;
-const sq = squareSize = 35;
+const sq = squareSize = 50;
 const vacant = "black"; // color of an empty square
 let x = 2;
 let y = -1;
