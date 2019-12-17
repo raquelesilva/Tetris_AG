@@ -20,211 +20,193 @@ const vacant = "black"; // color of an empty square
 let x = 2;
 let y = 1;
 
-let x1, x2, x3, x4 = 0
-let y1, y2, y3, y4 = 0
-
 let frameCounter = 0;
 const T = 1; // vai ser o tipo
 let rotCounter = 1;
 let rnd;
-let stop = false
-let type = 0 /* Math.floor(Math.random() * 6) */
-
-window.addEventListener('keydown', ArrowPressed);
-window.addEventListener('keyup', ArrowReleased);
+let type = Math.floor(Math.random() * 6)
 
 class Piece {   	//construtor
-    constructor() {
-        this.x1 = x1;
-        this.x2 = x2;
-        this.x3 = x3;
-        this.x4 = x4;
-        this.y1 = y1;
-        this.y2 = y2;
-        this.y3 = y3;
-        this.y4 = y4;
+    constructor(type) {
         this.type = type;
+        this.stop = false;
     }
 
     draw() {
         if (this.type == 0) { // T
             ctx1.fillStyle = "pink";
             ctx1.strokeStyle = "black";
-            ctx1.strokeRect(x1, y1, sq, sq);
-            ctx1.fillRect(x1, y1, sq, sq);
-            ctx1.strokeRect(x2, y2, sq, sq);
-            ctx1.fillRect(x2, y2, sq, sq);
-            ctx1.strokeRect(x3, y3, sq, sq);
-            ctx1.fillRect(x3, y3, sq, sq);
-            ctx1.strokeRect(x4, y4, sq, sq);
-            ctx1.fillRect(x4, y4, sq, sq);
+            ctx1.strokeRect(this.x1, this.y1, sq, sq);
+            ctx1.fillRect(this.x1, this.y1, sq, sq);
+            ctx1.strokeRect(this.x2, this.y2, sq, sq);
+            ctx1.fillRect(this.x2, this.y2, sq, sq);
+            ctx1.strokeRect(this.x3, this.y3, sq, sq);
+            ctx1.fillRect(this.x3, this.y3, sq, sq);
+            ctx1.strokeRect(this.x4, this.y4, sq, sq);
+            ctx1.fillRect(this.x4, this.y4, sq, sq);
         }
         else if (this.type == 1) { //I
             ctx1.fillStyle = "cyan";
             ctx1.strokeStyle = "black";
-            ctx1.strokeRect(x1, y1, sq, sq);
-            ctx1.fillRect(x1, y1, sq, sq);
-            ctx1.strokeRect(x2, y2, sq, sq);
-            ctx1.fillRect(x2, y2, sq, sq);
-            ctx1.strokeRect(x3, y3, sq, sq);
-            ctx1.fillRect(x3, y3, sq, sq);
-            ctx1.strokeRect(x4, y4, sq, sq);
-            ctx1.fillRect(x4, y4, sq, sq);
+            ctx1.strokeRect(this.x1, this.y1, sq, sq);
+            ctx1.fillRect(this.x1, this.y1, sq, sq);
+            ctx1.strokeRect(this.x2, this.y2, sq, sq);
+            ctx1.fillRect(this.x2, this.y2, sq, sq);
+            ctx1.strokeRect(this.x3, this.y3, sq, sq);
+            ctx1.fillRect(this.x3, this.y3, sq, sq);
+            ctx1.strokeRect(this.x4, this.y4, sq, sq);
+            ctx1.fillRect(this.x4, this.y4, sq, sq);
         }
         else if (this.type == 2) { // 0
             ctx1.fillStyle = "blue";
             ctx1.strokeStyle = "black";
-            ctx1.strokeRect(x1, y1, sq, sq);
-            ctx1.fillRect(x1, y1, sq, sq);
-            ctx1.strokeRect(x2, y2, sq, sq);
-            ctx1.fillRect(x2, y2, sq, sq);
-            ctx1.strokeRect(x3, y3, sq, sq);
-            ctx1.fillRect(x3, y3, sq, sq);
-            ctx1.strokeRect(x4, y4, sq, sq);
-            ctx1.fillRect(x4, y4, sq, sq);
+            ctx1.strokeRect(this.x1, this.y1, sq, sq);
+            ctx1.fillRect(this.x1, this.y1, sq, sq);
+            ctx1.strokeRect(this.x2, this.y2, sq, sq);
+            ctx1.fillRect(this.x2, this.y2, sq, sq);
+            ctx1.strokeRect(this.x3, this.y3, sq, sq);
+            ctx1.fillRect(this.x3, this.y3, sq, sq);
+            ctx1.strokeRect(this.x4, this.y4, sq, sq);
+            ctx1.fillRect(this.x4, this.y4, sq, sq);
         }
         else if (this.type == 3) { // L
             ctx1.fillStyle = "yellow";
             ctx1.strokeStyle = "black";
-            ctx1.strokeRect(x1, y1, sq, sq);
-            ctx1.fillRect(x1, y1, sq, sq);
-            ctx1.strokeRect(x2, y2, sq, sq);
-            ctx1.fillRect(x2 , y2, sq, sq);
-            ctx1.strokeRect(x3, y3, sq, sq);
-            ctx1.fillRect(x3, y3, sq, sq);
-            ctx1.strokeRect(x4, y4 , sq, sq);
-            ctx1.fillRect(x4, y4, sq, sq);
+            ctx1.strokeRect(this.x1, this.y1, sq, sq);
+            ctx1.fillRect(this.x1, this.y1, sq, sq);
+            ctx1.strokeRect(this.x2, this.y2, sq, sq);
+            ctx1.fillRect(this.x2 , this.y2, sq, sq);
+            ctx1.strokeRect(this.x3, this.y3, sq, sq);
+            ctx1.fillRect(this.x3, this.y3, sq, sq);
+            ctx1.strokeRect(this.x4, this.y4 , sq, sq);
+            ctx1.fillRect(this.x4, this.y4, sq, sq);
         }
         else if (this.type == 4) { // Z
             ctx1.fillStyle = "red";
             ctx1.strokeStyle = "black";
-            ctx1.strokeRect(x1, y1, sq, sq);
-            ctx1.fillRect(x1, y1, sq, sq);
-            ctx1.strokeRect(x2, y2, sq, sq);
-            ctx1.fillRect(x2, y2, sq, sq);
-            ctx1.strokeRect(x3, y3, sq, sq);
-            ctx1.fillRect(x3, y3, sq, sq);
-            ctx1.strokeRect(x4, y4, sq, sq);
-            ctx1.fillRect(x4, y4, sq, sq);
+            ctx1.strokeRect(this.x1, this.y1, sq, sq);
+            ctx1.fillRect(this.x1, this.y1, sq, sq);
+            ctx1.strokeRect(this.x2, this.y2, sq, sq);
+            ctx1.fillRect(this.x2, this.y2, sq, sq);
+            ctx1.strokeRect(this.x3, this.y3, sq, sq);
+            ctx1.fillRect(this.x3, this.y3, sq, sq);
+            ctx1.strokeRect(this.x4, this.y4, sq, sq);
+            ctx1.fillRect(this.x4, this.y4, sq, sq);
         }
         else if (this.type == 5) { // S
             ctx1.fillStyle = "green";
             ctx1.strokeStyle = "black";
-            ctx1.strokeRect(x1, y1, sq, sq);
-            ctx1.fillRect(x1, y1, sq, sq);
-            ctx1.strokeRect(x2, y2, sq, sq);
-            ctx1.fillRect(x2, y2, sq, sq);
-            ctx1.strokeRect(x3 , y3, sq, sq);
-            ctx1.fillRect(x3 , y3, sq, sq);
-            ctx1.strokeRect(x4 , y4, sq, sq);
-            ctx1.fillRect(x4, y4, sq, sq);
+            ctx1.strokeRect(this.x1, this.y1, sq, sq);
+            ctx1.fillRect(this.x1, this.y1, sq, sq);
+            ctx1.strokeRect(this.x2, this.y2, sq, sq);
+            ctx1.fillRect(this.x2, this.y2, sq, sq);
+            ctx1.strokeRect(this.x3 , this.y3, sq, sq);
+            ctx1.fillRect(this.x3 , this.y3, sq, sq);
+            ctx1.strokeRect(this.x4 , this.y4, sq, sq);
+            ctx1.fillRect(this.x4, this.y4, sq, sq);
         }
         else if (this.type == 6) { // J
             ctx1.fillStyle = "orange";
             ctx1.strokeStyle = "black";
-            ctx1.strokeRect(x1, y1, sq, sq);
-            ctx1.fillRect(x1, y1, sq, sq);
-            ctx1.strokeRect(x2, y2, sq, sq);
-            ctx1.fillRect(x2, y2, sq, sq);
-            ctx1.strokeRect(x3, y3, sq, sq);
-            ctx1.fillRect(x3, y3, sq, sq);
-            ctx1.strokeRect(x4, y4, sq, sq);
-            ctx1.fillRect(x4, y4, sq, sq);
+            ctx1.strokeRect(this.x1, this.y1, sq, sq);
+            ctx1.fillRect(this.x1, this.y1, sq, sq);
+            ctx1.strokeRect(this.x2, this.y2, sq, sq);
+            ctx1.fillRect(this.x2, this.y2, sq, sq);
+            ctx1.strokeRect(this.x3, this.y3, sq, sq);
+            ctx1.fillRect(this.x3, this.y3, sq, sq);
+            ctx1.strokeRect(this.x4, this.y4, sq, sq);
+            ctx1.fillRect(this.x4, this.y4, sq, sq);
         }
     }
 
     update() {
-        if (this.y1 == H - sq || this.y2 == H - sq || this.y3 == H - sq || this.y4 == H - sq) {
-            console.log("PAREI");
+        if (this.y1 === H - sq || this.y2 === H - sq || this.y3 === H - sq || this.y4 === H - sq) {
             this.stop = true;
-            createPiece()
         } else {
-            console.log("COMECEI");
-            y1 += sq;
-            y2 += sq;
-            y3 += sq;
-            y4 += sq;
+            this.y1 += sq;
+            this.y2 += sq;
+            this.y3 += sq;
+            this.y4 += sq;
         }
     }
 
     createPiece() {
         if (this.type == 0) /* T */ {
-            x1 = 4 * sq;
-            x2 = 5 * sq;
-            x3 = 6 * sq;
-            x4 = 5 * sq;
-            y1 = 0;
-            y2 = 0;
-            y3 = 0;
-            y4 = sq;
-
-            console.log(this.x1, "/", this.x2, "/", this.x3, "/" ,this.x4)
+            this.x1 = 4 * sq;
+            this.x2 = 5 * sq;
+            this.x3 = 6 * sq;
+            this.x4 = 5 * sq;
+            this.y1 = 0;
+            this.y2 = 0;
+            this.y3 = 0;
+            this.y4 = sq;
         }
         else if (this.type == 1) /* I */ {
-            x1 = 3 * sq;
-            x2 = 4 * sq;
-            x3 = 5 * sq;
-            x4 = 6 * sq;
-            y1 = 0;
-            y2 = 0;
-            y3 = 0;
-            y4 = 0;
+            this.x1 = 3 * sq;
+            this.x2 = 4 * sq;
+            this.x3 = 5 * sq;
+            this.x4 = 6 * sq;
+            this.y1 = 0;
+            this.y2 = 0;
+            this.y3 = 0;
+            this.y4 = 0;
         }
         else if (this.type == 2) /* O */ {
-            x1 = 4 * sq;
-            x2 = 5 * sq;
-            x3 = 4 * sq;
-            x4 = 5 * sq;
-            y1 = 0;
-            y2 = 0;
-            y3 = sq;
-            y4 = sq;
+            this.x1 = 4 * sq;
+            this.x2 = 5 * sq;
+            this.x3 = 4 * sq;
+            this.x4 = 5 * sq;
+            this.y1 = 0;
+            this.y2 = 0;
+            this.y3 = sq;
+            this.y4 = sq;
         }
         else if (this.type == 3) /* L */ {
-            x1 = 4 * sq;
-            x2 = 4 * sq;
-            x3 = 4 * sq;
-            x4 = 5 * sq;
-            y1 = 0;
-            y2 = sq;
-            y3 = 2 * sq;
-            y4 = 2 * sq;
+            this.x1 = 4 * sq;
+            this.x2 = 4 * sq;
+            this.x3 = 4 * sq;
+            this.x4 = 5 * sq;
+            this.y1 = 0;
+            this.y2 = sq;
+            this.y3 = 2 * sq;
+            this.y4 = 2 * sq;
         }
         else if (this.type == 4) /* Z */ {
-            x1 = 4 * sq;
-            x2 = 5 * sq;
-            x3 = 5 * sq;
-            x4 = 6 * sq;
-            y1 = 0;
-            y2 = 0;
-            y3 = sq;
-            y4 = sq;
+            this.x1 = 4 * sq;
+            this.x2 = 5 * sq;
+            this.x3 = 5 * sq;
+            this.x4 = 6 * sq;
+            this.y1 = 0;
+            this.y2 = 0;
+            this.y3 = sq;
+            this.y4 = sq;
         }
         else if (this.type == 5) /* S */ {
-            x1 = 5 * sq;
-            x2 = 4 * sq;
-            x3 = 4 * sq;
-            x4 = 3 * sq;
-            y1 = 0;
-            y2 = 0;
-            y3 = sq;
-            y4 = sq;
+            this.x1 = 5 * sq;
+            this.x2 = 4 * sq;
+            this.x3 = 4 * sq;
+            this.x4 = 3 * sq;
+            this.y1 = 0;
+            this.y2 = 0;
+            this.y3 = sq;
+            this.y4 = sq;
         }
         else if (this.type == 6) /* J */ {
-            x1 = 4 * sq;
-            x2 = 4 * sq;
-            x3 = 4 * sq;
-            x4 = 3 * sq;
-            y1 = 0;
-            y2 = sq;
-            y3 = 2 * sq;
-            y4 = 2 * sq;
+            this.x1 = 4 * sq;
+            this.x2 = 4 * sq;
+            this.x3 = 4 * sq;
+            this.x4 = 3 * sq;
+            this.y1 = 0;
+            this.y2 = sq;
+            this.y3 = 2 * sq;
+            this.y4 = 2 * sq;
         }
     }
 }
 
 let pieces = new Array();
-pieces.push(new Piece());
+pieces.push(new Piece(type));
+pieces[0].createPiece();
 
 // DESENHAR UM QUADRADO
 function drawSquare(x, y, color) {
@@ -236,7 +218,6 @@ function drawSquare(x, y, color) {
 }
 
 // CRIAR O CAMPO
-
 let board = [];
 for (r = 0; r < row; r++) {
     board[r] = [];
@@ -266,12 +247,10 @@ function render() {
         piece.update();
     });
 
-    if (!stop) {
-        console.log("hello")
-        console.log(type)
+    if (pieces[pieces.length - 1].stop) {
+        type = Math.floor(Math.random() * 6)
+        pieces.push(new Piece(type));
         pieces[pieces.length - 1].createPiece()
-    } else {
-        console.log(type)
     }
 
     /* if (y == 1 || y == 20) {
@@ -283,12 +262,85 @@ function render() {
     } */
     /* drawPiece(x, y, "blue", rnd); */
 
-        if (frameCounter == 10) {
-            /* dropPiece(y); */
+        /* if (frameCounter == 10) {
+            dropPiece(y);
             frameCounter = 0;
         }
-        frameCounter++
+        frameCounter++ */
 }
+
+window.addEventListener('keydown', ArrowPressed);
+window.addEventListener('keyup', ArrowReleased);
+
+//MOVE PIECE TO THE RIGHT AND LEFT
+function ArrowPressed(e) {
+    if (e.key == 'ArrowRight' && (pieces[pieces.length - 1].x1 < W - sq || pieces[pieces.length - 1].x2 < W - sq || pieces[pieces.length - 1].x3 < W - sq || pieces[pieces.length - 1].x4 < W - sq)) {
+        pieces[pieces.length - 1].x1 += sq;
+        pieces[pieces.length - 1].x2 += sq;
+        pieces[pieces.length - 1].x3 += sq;
+        pieces[pieces.length - 1].x4 += sq;
+        console.log("direita")
+    }
+
+    if (e.key == 'ArrowLeft' && (pieces[pieces.length - 1].x1 > 0 || pieces[pieces.length - 1].x2 > 0 || pieces[pieces.length - 1].x3 > 0 || pieces[pieces.length - 1].x4 > 0)) {
+        pieces[pieces.length - 1].x1 -= sq;
+        pieces[pieces.length - 1].x2 -= sq;
+        pieces[pieces.length - 1].x3 -= sq;
+        pieces[pieces.length - 1].x4 -= sq;
+        console.log("esquerda")
+    }
+
+    /*     if (e.key == 'ArrowUp') {
+    
+            if (rotCounter == 4) {
+    
+                rotCounter = 0;
+            }
+            rotCounter++;
+            rnd = rotCounter;
+            console.log("rnd" + " " + rnd)
+            console.log("rotCounter" + " " + rotCounter)
+        } */
+
+    if (e.key == 'ArrowDown') {
+        pieces[pieces.length - 1].y1 += sq;
+        pieces[pieces.length - 1].y2 += sq;
+        pieces[pieces.length - 1].y3 += sq;
+        pieces[pieces.length - 1].y4 += sq;
+        console.log("desci")
+    }
+}
+
+function ArrowReleased(e) {
+    if (e.key == 'ArrowRight') {
+
+    }
+    if (e.key == 'ArrowLeft') {
+
+    }
+    if (e.key == 'ArrowUp') {
+
+    }
+    if (e.key == 'ArrowDown') {
+
+    }
+}
+
+//FUNÇÃO PARA A PEÇA CAIR
+/* function dropPiece(e) {
+    if (y < 20) {
+        y++
+    }
+} */
+
+window.onload = function () {
+    timer = window.setInterval(render, 300)
+}
+
+//FUNÇÃO PARA A CAIR UMA PEÇA RANDOM
+/* function randomPiece() {
+    return Math.floor(Math.random() * 0) + 1;
+} */
 
 //desnhea a peca T: rnd -> rotação
 /* function drawPiece(x, y, color, rnd) {
@@ -346,74 +398,4 @@ function render() {
         ctx1.strokeRect((x) * sq, (y - 2) * sq, sq, sq);
         ctx1.fillRect((x) * sq, (y - 2) * sq, sq, sq);
     }
-} */
-
-//MOVE PIECE TO THE RIGHT AND LEFT
-function ArrowPressed(e) {
-    if (e.key == 'ArrowRight' && (this.x1 >= 0 || this.x2 >= 0 || this.x3 >= 0 || this.x4 >= 0)) {
-        pieces[pieces.length - 1].x1 += sq;
-        pieces[pieces.length - 1].x2 += sq;
-        pieces[pieces.length - 1].x3 += sq;
-        pieces[pieces.length - 1].x4 += sq;
-        console.log("gfds")
-    }
-
-    if (e.key == 'ArrowLeft' && (this.x1 <= H - sq || this.x2 <= H - sq || this.x3 <= H - sq || this.x4 >= H - sq)) {
-        pieces[pieces.length - 1].x1 -= sq;
-        pieces[pieces.length - 1].x2 -= sq;
-        pieces[pieces.length - 1].x3 -= sq;
-        pieces[pieces.length - 1].x4 -= sq;
-        console.log("mexi")
-    }
-
-    /*     if (e.key == 'ArrowUp') {
-    
-            if (rotCounter == 4) {
-    
-                rotCounter = 0;
-            }
-            rotCounter++;
-            rnd = rotCounter;
-            console.log("rnd" + " " + rnd)
-            console.log("rotCounter" + " " + rotCounter)
-        } */
-
-    if (e.key == 'ArrowDown') {
-        y1 += sq;
-        y2 += sq;
-        y3 += sq;
-        y4 += sq;
-        console.log("desci")
-    }
-}
-
-function ArrowReleased(e) {
-    if (e.key == 'ArrowRight') {
-
-    }
-    if (e.key == 'ArrowLeft') {
-
-    }
-    if (e.key == 'ArrowUp') {
-
-    }
-    if (e.key == 'ArrowDown') {
-
-    }
-}
-
-//FUNÇÃO PARA A PEÇA CAIR
-/* function dropPiece(e) {
-    if (y < 20) {
-        y++
-    }
-} */
-
-window.onload = function () {
-    timer = window.setInterval(render, 100)
-}
-
-//FUNÇÃO PARA A CAIR UMA PEÇA RANDOM
-/* function randomPiece() {
-    return Math.floor(Math.random() * 0) + 1;
 } */
