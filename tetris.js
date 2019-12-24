@@ -25,6 +25,7 @@ const T = 1; // vai ser o tipo
 let rotCounter = 1;
 let rnd;
 let type = Math.floor(Math.random() * 6)
+let pieceCounter = 0
 
 class Piece {   	//construtor
     constructor(type) {
@@ -75,10 +76,10 @@ class Piece {   	//construtor
             ctx1.strokeRect(this.x1, this.y1, sq, sq);
             ctx1.fillRect(this.x1, this.y1, sq, sq);
             ctx1.strokeRect(this.x2, this.y2, sq, sq);
-            ctx1.fillRect(this.x2 , this.y2, sq, sq);
+            ctx1.fillRect(this.x2, this.y2, sq, sq);
             ctx1.strokeRect(this.x3, this.y3, sq, sq);
             ctx1.fillRect(this.x3, this.y3, sq, sq);
-            ctx1.strokeRect(this.x4, this.y4 , sq, sq);
+            ctx1.strokeRect(this.x4, this.y4, sq, sq);
             ctx1.fillRect(this.x4, this.y4, sq, sq);
         }
         else if (this.type == 4) { // Z
@@ -100,9 +101,9 @@ class Piece {   	//construtor
             ctx1.fillRect(this.x1, this.y1, sq, sq);
             ctx1.strokeRect(this.x2, this.y2, sq, sq);
             ctx1.fillRect(this.x2, this.y2, sq, sq);
-            ctx1.strokeRect(this.x3 , this.y3, sq, sq);
-            ctx1.fillRect(this.x3 , this.y3, sq, sq);
-            ctx1.strokeRect(this.x4 , this.y4, sq, sq);
+            ctx1.strokeRect(this.x3, this.y3, sq, sq);
+            ctx1.fillRect(this.x3, this.y3, sq, sq);
+            ctx1.strokeRect(this.x4, this.y4, sq, sq);
             ctx1.fillRect(this.x4, this.y4, sq, sq);
         }
         else if (this.type == 6) { // J
@@ -120,9 +121,63 @@ class Piece {   	//construtor
     }
 
     update() {
+
+
+        var pos1 = 0;
+        var pos2 = 0;
+        var pos3 = 0;
+        var pos4 = 0;
+        var pos5 = 0;
+        var pos6 = 0;
+        var pos7 = 0;
+        var pos8 = 0;
+        var count = 0;
+
+        //NEW CODE
+        //VAI AO ARRAY PIECES GUARDA AS POSIÇÕES DA ULTIMA PEÇA QUE FOI CRIADA NAS VARIÁVEIS
+        //-----------------------------------------------------------------------------------------//
+        for (let index = 0; index < pieces.length; index++) {
+
+
+
+            if (index >= 1) {
+
+                pos1 = pieces[index - 1].y1
+                pos2 = pieces[index - 1].y2
+                pos3 = pieces[index - 1].y3
+                pos4 = pieces[index - 1].y4
+                pos5 = pieces[index - 1].x1
+                pos6 = pieces[index - 1].x2
+                pos7 = pieces[index - 1].x3
+                pos8 = pieces[index - 1].x4
+
+            }
+
+        }
+        //-----------------------------------------------------------------------------------------//
+
         if (this.y1 === H - sq || this.y2 === H - sq || this.y3 === H - sq || this.y4 === H - sq) {
             this.stop = true;
-        } else {
+
+        }
+        //NEW CODE
+        //FAZ A VERIFICAÇÃO EM Y DAS COLISÕES JÁ RESULTA EM ALGUMAS PEÇAS MAS DEPOIS ELAS NÃO PASSAM PORQUE FALTA A COLISÃO
+        //COM O X PARA VER SE HÁ UMA PEÇA EM Y E EM X , POSSIVELMENTE VAI TER DE SER NECESSÁRIO FAZER COLISÕES PARA CADA PEÇA
+        //-----------------------------------------------------------------------------------------//
+        else if (pos1 == (this.y1 + sq)
+            || pos2 == (this.y2 + sq)
+            || pos3 == (this.y3 + sq)
+            || pos4 == (this.y4 + sq)
+        ) {
+
+            this.y1 == this.y1 - sq;
+            this.y2 == this.y2 - sq;
+            this.y3 == this.y3 - sq;
+            this.y3 == this.y4 - sq;
+            this.stop = true;
+        }
+        //-------------------------------------------------------------------------------------------//        
+        else if (this.stop == false) {
             this.y1 += sq;
             this.y2 += sq;
             this.y3 += sq;
@@ -201,12 +256,14 @@ class Piece {   	//construtor
             this.y3 = 2 * sq;
             this.y4 = 2 * sq;
         }
+        pieceCounter++;
     }
+
 }
 
 let pieces = new Array();
 pieces.push(new Piece(type));
-pieces[0].createPiece();
+pieces[0].createPiece()
 
 // DESENHAR UM QUADRADO
 function drawSquare(x, y, color) {
@@ -248,6 +305,7 @@ function render() {
     });
 
     if (pieces[pieces.length - 1].stop) {
+        console.log(pieces)
         type = Math.floor(Math.random() * 6)
         pieces.push(new Piece(type));
         pieces[pieces.length - 1].createPiece()
@@ -262,11 +320,11 @@ function render() {
     } */
     /* drawPiece(x, y, "blue", rnd); */
 
-        /* if (frameCounter == 10) {
-            dropPiece(y);
-            frameCounter = 0;
-        }
-        frameCounter++ */
+    /* if (frameCounter == 10) {
+        dropPiece(y);
+        frameCounter = 0;
+    }
+    frameCounter++ */
 }
 
 window.addEventListener('keydown', ArrowPressed);
