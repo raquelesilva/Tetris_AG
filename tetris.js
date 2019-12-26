@@ -166,15 +166,15 @@ class Piece {   	//construtor
         //-----------------------------------------------------------------------------------------//
         else if (pos1 == (this.y1 + sq)
             || pos2 == (this.y2 + sq)
-            || pos3 == (this.y3 + sq)
-            || pos4 == (this.y4 + sq)
+            || pos3 == (this.y3 + sq) 
+            || pos4 == (this.y4 + sq) 
         ) {
-
-            this.y1 == this.y1 - sq;
-            this.y2 == this.y2 - sq;
-            this.y3 == this.y3 - sq;
-            this.y3 == this.y4 - sq;
             this.stop = true;
+            this.y1 = this.y1;
+            this.y2 = this.y2;
+            this.y3 = this.y3;
+            this.y4 = this.y4;
+            
         }
         //-------------------------------------------------------------------------------------------//        
         else if (this.stop == false) {
