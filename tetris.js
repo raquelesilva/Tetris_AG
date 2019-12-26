@@ -183,6 +183,13 @@ class Piece {   	//construtor
             this.y3 += sq;
             this.y4 += sq;
         }
+
+        // Reinicar o jogo quando chega ao limite de cima
+        if (this.y1 === 0 || this.y2 === 0 || this.y1 === 0 || this.y2 === 0) {
+            this.stop == true;
+            ctx1.clearRect(0, 0, W, H);
+            drawBoard();
+        }
     }
 
     createPiece() {
