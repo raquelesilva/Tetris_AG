@@ -170,10 +170,7 @@ class Piece {   	//construtor
             || pos4 == (this.y4 + sq) 
         ) {
             this.stop = true;
-            this.y1 = this.y1;
-            this.y2 = this.y2;
-            this.y3 = this.y3;
-            this.y4 = this.y4;
+     
             
         }
         //-------------------------------------------------------------------------------------------//        
