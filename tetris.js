@@ -164,14 +164,26 @@ class Piece {   	//construtor
         //FAZ A VERIFICAÇÃO EM Y DAS COLISÕES JÁ RESULTA EM ALGUMAS PEÇAS MAS DEPOIS ELAS NÃO PASSAM PORQUE FALTA A COLISÃO
         //COM O X PARA VER SE HÁ UMA PEÇA EM Y E EM X , POSSIVELMENTE VAI TER DE SER NECESSÁRIO FAZER COLISÕES PARA CADA PEÇA
         //-----------------------------------------------------------------------------------------//
-        else if (pos1 == (this.y1 + sq)
-            || pos2 == (this.y2 + sq)
-            || pos3 == (this.y3 + sq) 
-            || pos4 == (this.y4 + sq) 
-        ) {
-            this.stop = true;
-     
-            
+        else if ((pos1 == (this.y1 + sq))
+            || pos2 == ((this.y2 + sq))
+            || pos3 == ((this.y3 + sq))
+            || pos4 == ((this.y4 + sq))) {
+
+
+            if (pieceCounter > 1) {
+
+                for (let index = 0; index < pieces.length; index++) {
+
+                    if ((pos5 == this.x1 + sq) || (pos6) == this.x2 + sq || (pos7) == this.x3 + sq || (pos8) == this.x4 + sq)  {
+
+                        this.stop = true;
+                    }
+                }
+
+
+            }
+
+
         }
         //-------------------------------------------------------------------------------------------//        
         else if (this.stop == false) {
