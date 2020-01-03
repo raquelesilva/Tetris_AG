@@ -10,7 +10,9 @@ const H = canvas1.height;
 
 
 document.getElementById("start").addEventListener("click", function resetGame() {
-    ctx1.clearRect(0, 0, W, H)
+    ctx1.clearRect(0, 0, W, H);
+    ctx2.clearRect(0, 0, W, H);
+    peice[piece.length - 1]
 })
 
 const row = 22;
@@ -22,7 +24,7 @@ let y = 1;
 
 let frameCounter = 0;
 const T = 1; // vai ser o tipo
-let rotCounter = 1;
+let count = 0;
 let rnd;
 let type = Math.floor(Math.random() * 6)
 let pieceCounter = 0
@@ -121,17 +123,15 @@ class Piece {   	//construtor
     }
 
     update() {
-
-
-        var pos1 = 0;
-        var pos2 = 0;
-        var pos3 = 0;
-        var pos4 = 0;
-        var pos5 = 0;
-        var pos6 = 0;
-        var pos7 = 0;
-        var pos8 = 0;
-        var count = 0;
+        let pos1 = 0;
+        let pos2 = 0;
+        let pos3 = 0;
+        let pos4 = 0;
+        let pos5 = 0;
+        let pos6 = 0;
+        let pos7 = 0;
+        let pos8 = 0;
+        let count = 0;
 
         //NEW CODE
         //VAI AO ARRAY PIECES GUARDA AS POSIÇÕES DA ULTIMA PEÇA QUE FOI CRIADA NAS VARIÁVEIS
@@ -381,7 +381,134 @@ function ArrowPressed(e) {
         pieces[pieces.length - 1].y2 += sq;
         pieces[pieces.length - 1].y3 += sq;
         pieces[pieces.length - 1].y4 += sq;
-        console.log("desci")
+    }
+    
+
+    if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 0 && count == 0) {
+        pieces[pieces.length - 1].x1 += sq;
+        pieces[pieces.length - 1].y1 -= sq;
+        count++;
+        
+    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 0 && count == 1) {
+        pieces[pieces.length - 1].x4 -= sq;
+        pieces[pieces.length - 1].y4 -= sq;
+        count++;
+        
+    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 0 && count == 2) {
+        pieces[pieces.length - 1].x3 -= sq;
+        pieces[pieces.length - 1].y3 += sq;
+        count++;
+        
+    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 0 && count == 3) {
+
+        count = 0;
+    }
+
+
+    if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 1 && count == 0) {
+        pieces[pieces.length - 1].x1 += 2 * sq;
+        pieces[pieces.length - 1].y1 -= sq;
+        pieces[pieces.length - 1].x2 += sq;
+        pieces[pieces.length - 1].y3 += sq;
+        pieces[pieces.length - 1].x4 -= sq;
+        pieces[pieces.length - 1].y4 += 2 * sq;
+        count++;
+    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 1 && count == 1) {
+        pieces[pieces.length - 1].x1 -= 2 * sq;
+        pieces[pieces.length - 1].y1 += sq;
+        pieces[pieces.length - 1].x2 -= sq;
+        pieces[pieces.length - 1].y3 -= sq;
+        pieces[pieces.length - 1].x4 += sq;
+        pieces[pieces.length - 1].y4 -= 2 * sq;
+        count = 0;
+    }
+
+
+    if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 3 && count == 0) {
+        pieces[pieces.length - 1].y1 += 3 * sq;
+        pieces[pieces.length - 1].x2 += 2 * sq;
+        pieces[pieces.length - 1].y2 += sq;
+        count++;
+        
+    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 3 && count == 1) {
+        pieces[pieces.length - 1].x4 -= 2 * sq;
+        pieces[pieces.length - 1].x2 -= 2 * sq;
+        pieces[pieces.length - 1].y2 += 2 * sq;
+        count++;
+        
+    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 3 && count == 2) {
+        pieces[pieces.length - 1].x1 += sq;
+        pieces[pieces.length - 1].y1 -= sq;
+        pieces[pieces.length - 1].x2 += sq;
+        pieces[pieces.length - 1].y2 -= 3 * sq;
+        count++;
+        
+    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 3 && count == 3) {
+        
+        count = 0;
+        
+    }
+
+
+    if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 4 && count == 0) {
+        pieces[pieces.length - 1].x1 += 2 * sq;
+        pieces[pieces.length - 1].y1 -= sq;
+        pieces[pieces.length - 1].y4 -= sq;
+        count++;
+        
+    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 4 && count == 1) {
+        pieces[pieces.length - 1].x1 -= 2 * sq;
+        pieces[pieces.length - 1].y1 += sq;
+        pieces[pieces.length - 1].y4 += sq;
+        count = 0;
+        
+    }
+
+
+    if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 5 && count == 0) {
+        pieces[pieces.length - 1].x1 -= 2 * sq;
+        pieces[pieces.length - 1].y1 -= sq;
+        pieces[pieces.length - 1].y4 -= sq;
+        count++;
+        
+    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 5 && count == 1) {
+        pieces[pieces.length - 1].x1 += 2 * sq;
+        pieces[pieces.length - 1].y1 += sq;
+        pieces[pieces.length - 1].y4 += sq;
+        count = 0;
+        
+    }
+
+
+    if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 6 && count == 0) {
+        pieces[pieces.length - 1].x3 += sq;
+        pieces[pieces.length - 1].y3 -= sq;
+        pieces[pieces.length - 1].x4 += 3 * sq;
+        pieces[pieces.length - 1].y4 -= sq;
+        count++;
+        
+    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 6 && count == 1) {
+        pieces[pieces.length - 1].x3 -= sq;
+        pieces[pieces.length - 1].y3 += sq;
+        pieces[pieces.length - 1].x4 -= sq;
+        pieces[pieces.length - 1].y4 -= sq;
+        count++;
+        
+    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 6 && count == 2) {
+        pieces[pieces.length - 1].x2 += 2 * sq;
+        pieces[pieces.length - 1].y2 -= sq;
+        pieces[pieces.length - 1].x3 += 2 * sq;
+        pieces[pieces.length - 1].y3 -= sq;
+        count++;
+        
+    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 6 && count == 3) {
+/*         pieces[pieces.length - 1].x2 -= 2 * sq;
+        pieces[pieces.length - 1].y2 += sq;
+        pieces[pieces.length - 1].x3 -= 3 * sq;
+        pieces[pieces.length - 1].y3 += 2 * sq;
+        pieces[pieces.length - 1].x4 -= 2 * sq;
+        pieces[pieces.length - 1].y4 += 2 * sq; */
+        count = 0;
     }
 }
 
