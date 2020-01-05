@@ -27,7 +27,6 @@ let count = 0;
 let rnd;
 let type = Math.floor(Math.random() * 6);
 let pieceCounter = 0;
-let Pieces = [];
 
 class Piece {   	//construtor
     constructor(type) {
@@ -158,8 +157,6 @@ class Piece {   	//construtor
 
         if (this.y1 === H - sq || this.y2 === H - sq || this.y3 === H - sq || this.y4 === H - sq) {
             this.stop = true;
-            Pieces.push(this.x1, this.y1, this.x2, this.y2, this.x3, this.y3, this.x4, this.y4)
-            console.log(Pieces);
         }
         //NEW CODE
         //FAZ A VERIFICAÇÃO EM Y DAS COLISÕES JÁ RESULTA EM ALGUMAS PEÇAS MAS DEPOIS ELAS NÃO PASSAM PORQUE FALTA A COLISÃO
