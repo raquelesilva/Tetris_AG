@@ -21,7 +21,7 @@ h1{
     border: solid 4px rgb(2, 243, 231);
     background: black;
     position: absolute;
-    right: 600px;
+    right: 550px;
     width: 300px;
     height: 600px;
     top: 50px;
@@ -31,7 +31,7 @@ h1{
     border: solid 4px rgb(2, 243, 231);
     background: black;
     position: absolute;
-    right: 404px;
+    right: 304px;
     width: 150px;
     height: 150px;
     top: 50px;
@@ -41,7 +41,7 @@ h1{
     background-color: salmon;
     border: 0px;
     position: absolute;
-    right: 454px;
+    right: 354px;
     bottom: 280px;
     width: 100px;
 }
@@ -50,7 +50,7 @@ h1{
     background-color: salmon;
     border: 0px;
     position: absolute;
-    right: 454px;
+    right: 354px;
     bottom: 240px;
     width: 100px;
 }
@@ -59,7 +59,7 @@ h1{
     background-color: salmon;
     border: 0px;
     position: absolute;
-    right: 454px;
+    right: 354px;
     bottom: 200px;
     width: 100px;
 }
@@ -68,7 +68,7 @@ h1{
     background-color: salmon;
     border: 0px;
     position: absolute;
-    right: 454px;
+    right: 354px;
     bottom: 160px;
     width: 100px;
 }
