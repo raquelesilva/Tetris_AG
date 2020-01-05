@@ -9,7 +9,7 @@ const W = canvas1.width;
 const H = canvas1.height;
 
 const row = 22;
-const col = column = 12;
+const col = column = 20;
 const sq = squareSize = 50;
 const vacant = "black"; // color of an empty square
 
