@@ -1,0 +1,94 @@
+@font-face {
+    font-family: Tetris2;
+    src: url(/Tetris2.ttf);
+}
+
+html,body{
+    background-color: rgb(201, 126, 255);
+    max-width:100%;
+    width:100%;
+}
+
+h1{
+    position: absolute;
+    font-family: Tetris2;
+    color: rgb(2, 243, 231);
+    top: 300px;
+    left: 50px;
+}
+
+#c1{
+    border: solid 4px rgb(2, 243, 231);
+    background: black;
+    position: absolute;
+    right: 350px;
+    width:300px;
+    height: 600px;
+    top: 50px;
+}
+
+#c2{
+    border: solid 4px rgb(2, 243, 231);
+    background: black;
+    position: absolute;
+    right: 154px;
+    width: 150px;
+    height: 150px;
+    top: 50px;
+}
+
+#c3{
+    border: solid 4px rgb(2, 243, 231);
+    background: black;
+    position: absolute;
+    left: 450px;
+    width:300px;
+    height: 600px;
+    top: 50px;
+}
+
+#c4{
+    border: solid 4px rgb(2, 243, 231);
+    background: black;
+    position: absolute;
+    left: 254px;
+    width: 150px;
+    height: 150px;
+    top: 50px;
+}
+
+#players{
+    background-color: salmon;
+    border: 0px;
+    position: absolute;
+    right: 154px;
+    bottom: 280px;
+    width: 100px;
+}
+
+#start{
+    background-color: salmon;
+    border: 0px;
+    position: absolute;
+    right: 154px;
+    bottom: 240px;
+    width: 100px;
+}
+
+#pause{
+    background-color: salmon;
+    border: 0px;
+    position: absolute;
+    right: 154px;
+    bottom: 200px;
+    width: 100px;
+}
+
+#exit{
+    background-color: salmon;
+    border: 0px;
+    position: absolute;
+    right: 154px;
+    bottom: 160px;
+    width: 100px;
+}

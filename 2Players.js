@@ -5,6 +5,12 @@ const scoreElement = document.getElementById("score");
 const canvas2 = document.querySelector("#c2");
 const ctx2 = canvas2.getContext("2d");
 
+const canvas3 = document.querySelector("#c2");
+const ctx3 = canvas2.getContext("2d");
+
+const canvas4 = document.querySelector("#c2");
+const ctx4 = canvas2.getContext("2d");
+
 const W = canvas1.width;
 const H = canvas1.height;
 
@@ -161,6 +167,7 @@ class Piece {   	//construtor
             Pieces.push(this.x1, this.y1, this.x2, this.y2, this.x3, this.y3, this.x4, this.y4)
             console.log(Pieces);
         }
+
         //NEW CODE
         //FAZ A VERIFICAÇÃO EM Y DAS COLISÕES JÁ RESULTA EM ALGUMAS PEÇAS MAS DEPOIS ELAS NÃO PASSAM PORQUE FALTA A COLISÃO
         //COM O X PARA VER SE HÁ UMA PEÇA EM Y E EM X , POSSIVELMENTE VAI TER DE SER NECESSÁRIO FAZER COLISÕES PARA CADA PEÇA
@@ -289,7 +296,15 @@ function drawSquare(x, y, color) {
 
     ctx1.strokeStyle = "white";
     ctx1.strokeRect(x * sq, y * sq, sq, sq);
+
+    ctx3.fillStyle = color;
+    ctx3.fillRect(x * sq, y * sq, sq, sq);
+
+    ctx3.strokeStyle = "white";
+    ctx3.strokeRect(x * sq, y * sq, sq, sq);
 }
+
+
 
 // CRIAR O CAMPO
 let board = [];
@@ -382,7 +397,6 @@ function ArrowPressed(e) {
         pieces[pieces.length - 1].y2 += sq;
         pieces[pieces.length - 1].y3 += sq;
         pieces[pieces.length - 1].y4 += sq;
-        console.log("desci")
     }
     
 
@@ -523,7 +537,7 @@ function ArrowReleased(e) {
 } */
 
 window.onload = function () {
-    timer = window.setInterval(render, 350)
+    timer = window.setInterval(render, 300)
 }
 
 //FUNÇÃO PARA A CAIR UMA PEÇA RANDOM
