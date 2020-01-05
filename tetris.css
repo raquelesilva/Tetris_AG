@@ -1,7 +1,14 @@
+<<<<<<< HEAD
+/*@font-face {
+    font-family: Tetris2;
+    src: url(/Tetris2.ttf);
+}*/
+=======
 /* @font-face {
     font-family: Tetris2;
     src: url(/Tetris2.ttf);
 } */
+>>>>>>> 5e64579e8c312f7efbb07867e931e6dadb33123e
 
 html,body{
     background-color: rgb(201, 126, 255);
