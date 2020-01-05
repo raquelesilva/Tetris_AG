@@ -172,24 +172,22 @@ class Piece {   	//construtor
 
                 for (let index = 0; index < pieces.length; index++) {
 
-                    if ((pos5 == this.x1 + sq) || (pos6) == this.x2 + sq || (pos7) == this.x3 + sq || (pos8) == this.x4 + sq)  {
+                    if ((pos5 == this.x1 + sq) || (pos6) == this.x2 + sq || (pos7) == this.x3 + sq || (pos8) == this.x4 + sq) {
 
+                        console.log("bati");
                         this.stop = true;
                     }
+
                 }
-
-
             }
-
-
+            else if (this.stop == false) {
+                this.y1 += sq;
+                this.y2 += sq;
+                this.y3 += sq;
+                this.y4 += sq;
+            }
         }
         //-------------------------------------------------------------------------------------------//        
-        else if (this.stop == false) {
-            this.y1 += sq;
-            this.y2 += sq;
-            this.y3 += sq;
-            this.y4 += sq;
-        }
 
         // Reinicar o jogo quando chega ao limite de cima
         if (this.y1 === 0 || this.y2 === 0 || this.y1 === 0 || this.y2 === 0) {
@@ -381,21 +379,21 @@ function ArrowPressed(e) {
         pieces[pieces.length - 1].y4 += sq;
         console.log("desci")
     }
-    
+
 
     if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 0 && count == 0) {
         pieces[pieces.length - 1].x1 += sq;
         pieces[pieces.length - 1].y1 -= sq;
         count++;
-    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 0 && count == 1) {
+    } else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 0 && count == 1) {
         pieces[pieces.length - 1].x4 -= sq;
         pieces[pieces.length - 1].y4 -= sq;
         count++;
-    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 0 && count == 2) {
+    } else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 0 && count == 2) {
         pieces[pieces.length - 1].x3 -= sq;
         pieces[pieces.length - 1].y3 += sq;
         count++;
-    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 0 && count == 3) {
+    } else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 0 && count == 3) {
 
         count = 0;
     }
@@ -409,7 +407,7 @@ function ArrowPressed(e) {
         pieces[pieces.length - 1].x4 -= sq;
         pieces[pieces.length - 1].y4 += 2 * sq;
         count++;
-    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 1 && count == 1) {
+    } else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 1 && count == 1) {
         pieces[pieces.length - 1].x1 -= 2 * sq;
         pieces[pieces.length - 1].y1 += sq;
         pieces[pieces.length - 1].x2 -= sq;
@@ -425,19 +423,19 @@ function ArrowPressed(e) {
         pieces[pieces.length - 1].x2 += 2 * sq;
         pieces[pieces.length - 1].y2 += sq;
         count++;
-    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 3 && count == 1) {
+    } else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 3 && count == 1) {
         pieces[pieces.length - 1].x4 -= 2 * sq;
         pieces[pieces.length - 1].x2 -= 2 * sq;
         pieces[pieces.length - 1].y2 += 2 * sq;
         count++;
-    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 3 && count == 2) {
+    } else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 3 && count == 2) {
         pieces[pieces.length - 1].x1 += sq;
         pieces[pieces.length - 1].y1 -= sq;
         pieces[pieces.length - 1].x2 += sq;
         pieces[pieces.length - 1].y2 -= 3 * sq;
         count++;
-    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 3 && count == 3) {
-        
+    } else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 3 && count == 3) {
+
         count = 0;
     }
 
@@ -447,7 +445,7 @@ function ArrowPressed(e) {
         pieces[pieces.length - 1].y1 -= sq;
         pieces[pieces.length - 1].y4 -= sq;
         count++;
-    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 4 && count == 1) {
+    } else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 4 && count == 1) {
         pieces[pieces.length - 1].x1 -= 2 * sq;
         pieces[pieces.length - 1].y1 += sq;
         pieces[pieces.length - 1].y4 += sq;
@@ -460,7 +458,7 @@ function ArrowPressed(e) {
         pieces[pieces.length - 1].y1 -= sq;
         pieces[pieces.length - 1].y4 -= sq;
         count++;
-    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 5 && count == 1) {
+    } else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 5 && count == 1) {
         pieces[pieces.length - 1].x1 += 2 * sq;
         pieces[pieces.length - 1].y1 += sq;
         pieces[pieces.length - 1].y4 += sq;
@@ -474,25 +472,25 @@ function ArrowPressed(e) {
         pieces[pieces.length - 1].x4 += 3 * sq;
         pieces[pieces.length - 1].y4 -= sq;
         count++;
-    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 6 && count == 1) {
+    } else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 6 && count == 1) {
         pieces[pieces.length - 1].x3 -= sq;
         pieces[pieces.length - 1].y3 += sq;
         pieces[pieces.length - 1].x4 -= sq;
         pieces[pieces.length - 1].y4 -= sq;
         count++;
-    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 6 && count == 2) {
+    } else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 6 && count == 2) {
         pieces[pieces.length - 1].x2 += 2 * sq;
         pieces[pieces.length - 1].y2 -= sq;
         pieces[pieces.length - 1].x3 += 2 * sq;
         pieces[pieces.length - 1].y3 -= sq;
         count++;
-    }else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 6 && count == 3) {
-/*         pieces[pieces.length - 1].x2 -= 2 * sq;
-        pieces[pieces.length - 1].y2 += sq;
-        pieces[pieces.length - 1].x3 -= 3 * sq;
-        pieces[pieces.length - 1].y3 += 2 * sq;
-        pieces[pieces.length - 1].x4 -= 2 * sq;
-        pieces[pieces.length - 1].y4 += 2 * sq; */
+    } else if (e.key == 'ArrowUp' && pieces[pieces.length - 1].type === 6 && count == 3) {
+        /*         pieces[pieces.length - 1].x2 -= 2 * sq;
+                pieces[pieces.length - 1].y2 += sq;
+                pieces[pieces.length - 1].x3 -= 3 * sq;
+                pieces[pieces.length - 1].y3 += 2 * sq;
+                pieces[pieces.length - 1].x4 -= 2 * sq;
+                pieces[pieces.length - 1].y4 += 2 * sq; */
         count = 0;
     }
 }
