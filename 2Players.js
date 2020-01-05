@@ -33,7 +33,6 @@ let count = 0;
 let rnd;
 let type = Math.floor(Math.random() * 6);
 let pieceCounter = 0;
-let Pieces = [];
 
 class Piece {   	//construtor
     constructor(type) {
