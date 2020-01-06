@@ -32,11 +32,10 @@ let stop = false;
 let gameOver = false;
 let text = "GAME OVER!!";
 
-let borderX = []
-let borderY = []
+let borderX = [];
+let borderY = [];
 
-let X = [];
-let Y = [];
+let finalPosition = [];
 
 class Piece {   	//construtor
     constructor(type) {
@@ -151,6 +150,20 @@ class Piece {   	//construtor
                         ((borderY[j] + sq) == pieces[i].y3 && borderX[j] == pieces[i].x3) || ((borderY[j] + sq) == pieces[i].y4 && borderX[j] == pieces[i].x4)) &&
                         this.stop != true) {
                         this.stop = true
+                        // Reinicar o jogo quando chega ao limite de cima
+                        if (this.y1 === 0 || this.y2 === 0 || this.y3 === 0 || this.y4 === 0)  {
+                            this.stop == true;
+                            ctx1.clearRect(0, 0, W, H);
+                            ctx1.font = "80px Tetris2";
+
+                            if (gameOver = true) {
+                                ctx1.fillText(text, 10, H / 2);
+                            } else if (document.getElementById("start").clicked === true) {
+                                gameOver = false;
+                                begin();
+                            }
+                        }
+                        finalPosition.push(pieces)
                     }
                 }
             }
@@ -163,6 +176,8 @@ class Piece {   	//construtor
             borderX = [];
             borderY = [];
 
+            finalPosition.push(pieces)
+            console.log(equal)
         }
 
         else if (this.stop == false) {
@@ -173,24 +188,8 @@ class Piece {   	//construtor
             this.y2 += sq;
             this.y3 += sq;
             this.y4 += sq;
-        }else if (this.stop == true) {
-            
-            console.log(pieces)
-        }
-
-
-
-        // Reinicar o jogo quando chega ao limite de cima
-        if (this.y1 === 0 || this.y2 === 0 || this.y3 === 0 || this.y4 === 0) {
-            this.stop == true;
-            ctx1.clearRect(0, 0, W, H);
-            ctx1.font = "80px Arial";
-
-            if (gameOver = true) {
-                ctx1.fillText(text, 10, H / 2);
-            } else {
-                begin();
-            }
+        } else if (this.stop === true) {
+            finalPosition.push(pieces)
         }
     }
 
@@ -448,19 +447,8 @@ function render() {
             }
         });
     }
-
     erase();
 }
-
-/* BUTTON TO RESTART THE GAME */
-document.getElementById("start").addEventListener("click", function() {
-    gameOver = false;
-    begin();
-    ctx1.clearRect(0, 0, W, H);
-    ctx2.clearRect(0, 0, W, H);
-    pieces.push(new Piece(type));
-    pieces[0].createPiece();
-})
 
 window.addEventListener('keydown', ArrowPressed);
 window.addEventListener('keyup', ArrowReleased);
@@ -511,16 +499,23 @@ let contLines;
 
 function erase() {
 
-    for (let i = 0; i < pieces.length; i++) {
-        
-        if (pieces[i].y1 == 1050 || pieces[i].y2 == 1050 || pieces[i].y3 == 1050 || pieces[i].y4 == 1050)  {
-            contLines++;
-        }
-        if (contLines == 11) {
-            console.log("apagar");
+    for (let i = 0; i < finalPosition.length; i++) {
+
+        /*         if (pieces[i].y1 == 1050 || pieces[i].y2 == 1050 || pieces[i].y3 == 1050 || pieces[i].y4 == 1050)  {
+                    contLines++;
+                }
+                if (contLines == 11) {
+                    console.log("apagar");
+                } */
+
+        if (finalPosition[i].stop === true) {
+            equal++;
+            console.log("equal=" + equal)
+        }else{
+            console.log("MERDA")
         }
     }
-   
+
 }
 
 window.onload = function () {

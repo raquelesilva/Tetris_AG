@@ -32,8 +32,10 @@ let stop = false;
 let gameOver = false;
 let text = "GAME OVER!!";
 
-let borderX = []
-let borderY = []
+let borderX = [];
+let borderY = [];
+
+let finalPosition = [];
 
 class Piece {   	//construtor
     constructor(type) {
@@ -45,7 +47,6 @@ class Piece {   	//construtor
     }
 
     draw() {
-        console.log("desenhei");
         if (this.type === 0) { // T
             ctx1.fillStyle = "pink";
             ctx1.strokeStyle = "black";
@@ -133,7 +134,6 @@ class Piece {   	//construtor
     }
 
     update() {
-        console.log("entrei no update")
         borderX.push(this.x1)
         borderY.push(this.y1)
         borderX.push(this.x2)
@@ -143,9 +143,6 @@ class Piece {   	//construtor
         borderX.push(this.x4)
         borderY.push(this.y4)
 
-        //NEW CODE
-        //VAI AO ARRAY PIECES GUARDA AS POSIÇÕES DA ULTIMA PEÇA QUE FOI CRIADA NAS VARIÁVEIS
-        //-----------------------------------------------------------------------------------------//
         if (pieces.length >= 1) {
             for (let j = 0; j < 4; j++) {
                 for (let i = 0; i < pieces.length - 1; i++) {
@@ -153,43 +150,25 @@ class Piece {   	//construtor
                         ((borderY[j] + sq) == pieces[i].y3 && borderX[j] == pieces[i].x3) || ((borderY[j] + sq) == pieces[i].y4 && borderX[j] == pieces[i].x4)) &&
                         this.stop != true) {
                         this.stop = true
+
+                        finalPosition.push(pieces)
+                        console.log(finalPosition)
                     }
-                    if ((((borderY[j]) == pieces[i].y1 - sq && borderX[j] == pieces[i].x1 + sq) || ((borderY[j]) == pieces[i].y2 - sq && borderX[j] == pieces[i].x2 + sq) ||
-                        ((borderY[j]) == pieces[i].y3 - sq && borderX[j] == pieces[i].x3 + sq) || (borderY[j] == pieces[i].y4 - sq && borderX[j] == pieces[i].x4 + sq)) &&
-                        this.stop != true) {
-                        this.leftMargin = false
-                    }
-                    if ((((borderY[j]) == pieces[i].y1 - sq && borderX[j] == pieces[i].x1 - sq) || ((borderY[j]) == pieces[i].y2 - sq && borderX[j] == pieces[i].x2 - sq) ||
-                        ((borderY[j]) == pieces[i].y3 - sq && borderX[j] == pieces[i].x3 - sq) || (borderY[j] == pieces[i].y4 - sq && borderX[j] == pieces[i].x4 - sq)) &&
-                        this.stop != true) {
-                        this.rightMargin = true
-                    }
-                    this.rightMargin = false;
-                    this.leftMargin = false;
                 }
             }
             borderX = [];
             borderY = [];
         }
-        //-----------------------------------------------------------------------------------------//
 
         if (this.y1 === H - sq || this.y2 === H - sq || this.y3 === H - sq || this.y4 === H - sq) {
             this.stop = true;
             borderX = [];
             borderY = [];
+
+            finalPosition.push(pieces)
+            console.log(finalPosition)
         }
 
-        //NEW CODE
-        //FAZ A VERIFICAÇÃO EM Y DAS COLISÕES JÁ RESULTA EM ALGUMAS PEÇAS MAS DEPOIS ELAS NÃO PASSAM PORQUE FALTA A COLISÃO
-        //COM O X PARA VER SE HÁ UMA PEÇA EM Y E EM X , POSSIVELMENTE VAI TER DE SER NECESSÁRIO FAZER COLISÕES PARA CADA PEÇA
-        //-----------------------------------------------------------------------------------------//
-        /*  else if ((pos1 == (this.y1 + sq))
-             || pos2 == ((this.y2 + sq))
-             || pos3 == ((this.y3 + sq))
-             || pos4 == ((this.y4 + sq))) {
- 
-         } */
-        //-------------------------------------------------------------------------------------------//        
         else if (this.stop == false) {
             borderX = [];
             borderY = [];
@@ -198,7 +177,12 @@ class Piece {   	//construtor
             this.y2 += sq;
             this.y3 += sq;
             this.y4 += sq;
+        }else if (this.stop == true) {
+            
+            console.log(pieces)
         }
+
+
 
         // Reinicar o jogo quando chega ao limite de cima
         if (this.y1 === 0 || this.y2 === 0 || this.y3 === 0 || this.y4 === 0) {
@@ -208,15 +192,13 @@ class Piece {   	//construtor
 
             if (gameOver = true) {
                 ctx1.fillText(text, 10, H / 2);
-            }else{
+            } else {
                 begin();
             }
         }
     }
 
     createPiece() {
-        console.log(type)
-        console.log("entrei no createPiece")
 
         if (this.type == 0) /* T */ {
             this.x1 = 4 * sq;
@@ -327,7 +309,7 @@ class Piece {   	//construtor
                 this.rotation = 0
             }
         }
-        if (this.shape == 1) {
+        if (this.type == 1) {
             if (this.rotation == 0) {
                 this.x1 = this.x2;
                 this.y1 = this.y2 - sq;
@@ -347,7 +329,7 @@ class Piece {   	//construtor
                 this.rotation = 0
             }
         }
-        if (this.shape == 3) {
+        if (this.type == 3) {
             if (this.rotation == 0) {
                 this.x1 = this.x2
                 this.y1 = this.y2 - sq
@@ -374,7 +356,7 @@ class Piece {   	//construtor
                 this.rotation = 0
             }
         }
-        if (this.shape == 4) {
+        if (this.type == 4) {
             if (this.rotation == 0) {
                 this.x1 = this.x2
                 this.y1 = this.y2 - sq
@@ -393,7 +375,7 @@ class Piece {   	//construtor
                 this.rotation = 0
             }
         }
-        if (this.shape == 5) {
+        if (this.type == 5) {
             if (this.rotation == 0) {
                 this.x1 = this.x2
                 this.y1 = this.y2 + sq
@@ -413,7 +395,7 @@ class Piece {   	//construtor
                 this.rotation = 0
             }
         }
-        if (this.shape == 6) {
+        if (this.type == 6) {
             if (this.rotation == 0) {
                 this.x1 = this.x2
                 this.y1 = this.y2 - sq
@@ -451,75 +433,31 @@ function begin() {
     pieces[pieces.length - 1].createPiece();
 }
 
-// DESENHAR UM QUADRADO
-/* function drawSquare(x, y, color) {
-    ctx1.fillStyle = color;
-    ctx1.fillRect(x * sq, y * sq, sq, sq);
-
-    ctx1.strokeStyle = "white";
-    ctx1.strokeRect(x * sq, y * sq, sq, sq);
-} */
-
-// CRIAR O CAMPO
-/* let board = [];
-for (r = 0; r < row; r++) {
-    board[r] = [];
-    for (c = 0; c < col; c++) {
-        board[r][c] = vacant;
-    }
-} */
-
-// DESENHAR O CAMPO
-/* function drawBoard() {
-    for (r = 0; r < row; r++) {
-        for (c = 0; c < col; c++) {
-            drawSquare(c, r, board[r][c]);
-        }
-    }
-}
- */
-/* drawBoard(); */
-
 let seconds = 10
+let seconds1 = 10
 
 begin();
 
-//ANIMATION
+/* ANIMATION */
 function render() {
-    /*    drawBoard(); */
     frameCounter++
 
     if (frameCounter % seconds == 0) {
         ctx1.clearRect(0, 0, W, H)
 
         pieces.forEach(function (piece) {
-            console.log("entrei");
             piece.draw();
             piece.update();
             if (pieces[pieces.length - 1].stop) {
                 begin()
             }
         });
-
     }
-
-    /* if (y == 1 || y == 20) {
-        rnd = randomPiece()
-        //FOR THE T PIECE
-        if (y == 20 && rnd == 1) {
-
-        }
-    } */
-    /* drawPiece(x, y, "blue", rnd); */
-
-    /* if (frameCounter == 10) {
-        dropPiece(y);
-        frameCounter = 0;
-    }
-    frameCounter++ */
+    erase();
 }
 
-document.getElementById("start").addEventListener("click", function resetGame() {
+/* BUTTON TO RESTART THE GAME */
+document.getElementById("start").addEventListener("click", function() {
     gameOver = false;
     begin();
     ctx1.clearRect(0, 0, W, H);
@@ -531,14 +469,13 @@ document.getElementById("start").addEventListener("click", function resetGame() 
 window.addEventListener('keydown', ArrowPressed);
 window.addEventListener('keyup', ArrowReleased);
 
-//MOVE PIECE TO THE RIGHT AND LEFT
+/* MOVE PIECE TO THE RIGHT AND LEFT */
 function ArrowPressed(e) {
     if (e.key == 'ArrowRight' && (pieces[pieces.length - 1].x1 < W - sq || pieces[pieces.length - 1].x2 < W - sq || pieces[pieces.length - 1].x3 < W - sq || pieces[pieces.length - 1].x4 < W - sq && !pieces[pieces.length - 1].rightMargin)) {
         pieces[pieces.length - 1].x1 += sq;
         pieces[pieces.length - 1].x2 += sq;
         pieces[pieces.length - 1].x3 += sq;
         pieces[pieces.length - 1].x4 += sq;
-        console.log("direita")
     }
 
     if (e.key == 'ArrowLeft' && (pieces[pieces.length - 1].x1 > 0 || pieces[pieces.length - 1].x2 > 0 || pieces[pieces.length - 1].x3 > 0 || pieces[pieces.length - 1].x4 > 0 && !pieces[pieces.length - 1].leftMargin)) {
@@ -546,38 +483,23 @@ function ArrowPressed(e) {
         pieces[pieces.length - 1].x2 -= sq;
         pieces[pieces.length - 1].x3 -= sq;
         pieces[pieces.length - 1].x4 -= sq;
-        console.log("esquerda")
     }
-/* 
-    if (e.key == 'ArrowUp') {
-
-        if (rotCounter == 4) {
-
-            rotCounter = 0;
-        }
-        rotCounter++;
-        rnd = rotCounter;
-        console.log("rnd" + " " + rnd)
-        console.log("rotCounter" + " " + rotCounter)
-    } */
 
     if (e.key == 'ArrowDown') {
         seconds = 2
-        console.log("desci")
     }
 
 
-    if (e.key == 'w') {
+    if (e.key == 'ArrowUp') {
         pieces[pieces.length - 1].rotate();
-        console.log("rodei")
     }
+
 
     if (e.key == 'd' && (pieces[pieces.length - 1].x1 < W - sq || pieces[pieces.length - 1].x2 < W - sq || pieces[pieces.length - 1].x3 < W - sq || pieces[pieces.length - 1].x4 < W - sq && !pieces[pieces.length - 1].rightMargin)) {
         pieces[pieces.length - 1].x1 += sq;
         pieces[pieces.length - 1].x2 += sq;
         pieces[pieces.length - 1].x3 += sq;
         pieces[pieces.length - 1].x4 += sq;
-        console.log("direita")
     }
 
     if (e.key == 'a' && (pieces[pieces.length - 1].x1 > 0 || pieces[pieces.length - 1].x2 > 0 || pieces[pieces.length - 1].x3 > 0 || pieces[pieces.length - 1].x4 > 0 && !pieces[pieces.length - 1].leftMargin)) {
@@ -585,28 +507,15 @@ function ArrowPressed(e) {
         pieces[pieces.length - 1].x2 -= sq;
         pieces[pieces.length - 1].x3 -= sq;
         pieces[pieces.length - 1].x4 -= sq;
-        console.log("esquerda")
     }
-/* 
-    if (e.key == 'w') {
-
-        if (rotCounter1 == 4) {
-
-            rotCounter1 = 0;
-        }
-        rotCounter1++;
-        rnd1 = rotCounter1;
-    } */
 
     if (e.key == 's') {
-        seconds = 2
-        console.log("desci")
+        seconds1 = 2
     }
 
 
     if (e.key == 'w') {
         pieces[pieces.length - 1].rotate();
-        console.log("rodei")
     }
 }
 
@@ -623,6 +532,23 @@ function ArrowReleased(e) {
     if (e.key == 'ArrowDown') {
         seconds = 20
     }
+}
+
+let equal = 0;
+let contLines;
+
+function erase() {
+
+    for (let i = 0; i < pieces.length; i++) {
+        
+        if (pieces[i].y1 == 1050 || pieces[i].y2 == 1050 || pieces[i].y3 == 1050 || pieces[i].y4 == 1050)  {
+            contLines++;
+        }
+        if (contLines == 11) {
+            console.log("apagar");
+        }
+    }
+   
 }
 
 window.onload = function () {
