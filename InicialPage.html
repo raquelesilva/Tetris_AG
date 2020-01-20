@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inicial Page</title>
+    <style>
+        svg {
+            border: 1px solid black;
+            display: block;
+        }
+    </style>
+
+    <style>
+        @keyframes text {
+            0% {
+                fill-opacity: 0;
+                stroke-dashoffset: 500;
+                stroke-dasharray: 500;
+            }
+
+            50% {
+                fill-opacity: 0;
+            }
+
+            100% {
+                fill-opacity: 1;
+                stroke-dashoffset: 0;
+                stroke-dasharray: 400;
+            }
+        }
+
+        #tetris {
+            transform-origin: 25% 25%;
+            animation: 5s text ease-in forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <svg width="400" height="400">
+        <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="17%" stop-color="crimson" />
+                <stop offset="17%" stop-color="orangered" />
+                <stop offset="35%" stop-color="orangered" />
+                <stop offset="35%" stop-color="gold" />
+                <stop offset="54%" stop-color="gold" />
+                <stop offset="54%" stop-color="green" />
+                <stop offset="74%" stop-color="green" />
+                <stop offset="74%" stop-color="skyblue" />
+                <stop offset="83%" stop-color="skyblue" />
+                <stop offset="83%" stop-color="mediumpurple" />
+                <stop offset="100%" stop-color="mediumpurple" />
+            <linearGradient />
+        </defs>
+        <g id="tetris">
+            <text fill="url(#gradient)" stroke="black" font-size="90" x="5%" y="30%" transform="matrix(1 0 0 1 7 46)"
+                class="st0 st1">TETRIS</text>
+        </g>
+    </svg>
+
+
+</body>
+
+</html>
