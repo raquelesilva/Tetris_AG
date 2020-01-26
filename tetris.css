@@ -34,36 +34,42 @@ h1{
 
 #players{
     background-color: salmon;
-    border: 0px;
     position: absolute;
     right: 354px;
     bottom: 280px;
-    width: 100px;
+    width: 104px;
 }
 
 #start{
     background-color: salmon;
-    border: 0px;
     position: absolute;
     right: 354px;
     bottom: 240px;
-    width: 100px;
+    width: 104px;
 }
 
 #pause{
     background-color: salmon;
-    border: 0px;
     position: absolute;
     right: 354px;
     bottom: 200px;
-    width: 100px;
+    width: 104px;
 }
 
 #exit{
     background-color: salmon;
-    border: 0px;
     position: absolute;
     right: 354px;
     bottom: 160px;
-    width: 100px;
+    width: 104px;
+}
+
+button{
+    border-color: turquoise;
+    border-radius: 5px;
+}
+
+button:hover{
+    border-color: turquoise;
+    border-width: 3px;
 }

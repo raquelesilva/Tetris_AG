@@ -8,16 +8,44 @@
     <title>Inicial Page</title>
 
     <style>
+        body{
+            background-color:bisque;
+        }
         svg {
-            border: 1px solid black;
+            border: 1px solid transparent;
             display: block;
         }
+
         img {
             transform: translate(450px, -300px);
             position: absolute;
-            z-index: -100 ;
+            z-index: -90;
         }
 
+        button {
+            background-color:#F95C0D;
+            color: white;
+            width: 100px;
+            height: 50px;
+            border-radius: 5px;
+            border-color: #00FFFF;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: red;
+            border-width: 4px;
+            transform: rotate(10deg);
+            transition: 2s infinite;
+        }
+
+        #player1{
+            margin-left: 500px;
+        }
+
+        #player2{
+            margin-left: 30px;
+        }
     </style>
 
     <style>
@@ -28,6 +56,7 @@
                 stroke-dashoffset: 500;
                 stroke-dasharray: 500;
             }
+
             25% {
                 fill-opacity: 0;
                 transform: scale(0);
@@ -50,7 +79,7 @@
 
         #tetris {
             transform-origin: 25% 25%;
-            animation: 4s text ease-in forwards;
+            animation: 4s text 6s ease-in forwards;
         }
 
         @keyframes explosion {
@@ -70,33 +99,126 @@
             }
 
             100% {
-                fill-opacity: 0;
+                fill-opacity: 1;
                 transform: scale(0.5);
             }
         }
 
         #explosao {
             transform-origin: 20% 20%;
-            animation: 2s explosion ease-in forwards;
+            animation: 2s explosion 6s ease-in forwards;
         }
 
         @keyframes peca1 {
             0% {
+                fill-opacity: 0;
+                transform: translate(-105.3px, -173.4px) scale(0.5);
+            }
+
+            5% {
                 fill-opacity: 1;
-                transform: translate(-150px, -300px)
+                transform: translate(-105.3px, -173.4px) scale(0.5);
             }
-            99%{
-                /* fill-opacity: 0; */
-            }
+
             100% {
-                /* fill-opacity: 1; */
-                transform: translate(-150px, -300px)
+                fill-opacity: 1;
+                transform: translate(-111.3px, -124.3px) scale(0.5);
             }
         }
 
         #O {
             transform-origin: 50% 50%;
-            animation: 2s peca1 ease-in;
+            animation: 2s peca1 linear forwards;
+        }
+
+        @keyframes peca2 {
+            0% {
+                fill-opacity: 1;
+                transform: translate(-85.3px, -163.4px) scale(0.5);
+            }
+
+            5% {
+                fill-opacity: 1;
+                transform: translate(-85.3px, -163.4px) scale(0.5);
+            }
+
+
+            100% {
+                fill-opacity: 1;
+                transform: translate(-85.3px, -117.8px) scale(0.5);
+            }
+        }
+
+        #L {
+            transform-origin: 50% 50%;
+            animation: 2s peca2 2S linear forwards;
+        }
+
+        @keyframes peca3 {
+            0% {
+                fill-opacity: 1;
+                transform: translate(-85.3px, -173.4px) scale(0.5);
+            }
+
+            5% {
+                fill-opacity: 1;
+                transform: translate(-85.3px, -173.4px) scale(0.5);
+            }
+
+
+            100% {
+                fill-opacity: 1;
+                transform: translate(-78.7px, -124.4px) scale(0.5);
+            }
+        }
+
+        #Z {
+            transform-origin: 50% 50%;
+            animation: 2s peca3 4s linear forwards;
+        }
+
+        @keyframes peca4 {
+            0% {
+                fill-opacity: 1;
+                transform: translate(-65.3px, -163.4px) scale(0.5);
+            }
+
+            5% {
+                fill-opacity: 1;
+                transform: translate(-65.3px, -163.4px) scale(0.5);
+            }
+
+            100% {
+                fill-opacity: 1;
+                transform: translate(-55.3px, -120.8px) scale(0.5);
+            }
+        }
+
+        #J {
+            transform-origin: 50% 50%;
+            animation: 3s peca4 linear forwards;
+        }
+
+        @keyframes peca5 {
+            0% {
+                fill-opacity: 1;
+                transform: translate(-50.3px, -176.8px) scale(0.5);
+            }
+
+            5% {
+                fill-opacity: 1;
+                transform: translate(-50.3px, -176.8px) scale(0.5);
+            }
+
+            100% {
+                fill-opacity: 1;
+                transform: translate(-52.1px, -124.1px) scale(0.5);
+            }
+        }
+
+        #I {
+            transform-origin: 50% 50%;
+            animation: 3s peca5 3s linear forwards;
         }
     </style>
 </head>
@@ -105,142 +227,142 @@
     <svg width="1250" height="400">
         <defs>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="17%" stop-color="#FF0000" />
-                <stop offset="17%" stop-color="#F95C0D" />
-                <stop offset="35%" stop-color="#F95C0D" />
-                <stop offset="35%" stop-color="#FFFF00" />
-                <stop offset="54%" stop-color="#FFFF00" />
+                <stop offset="17%" stop-color="#FFC0CB" />
+                <stop offset="17%" stop-color="#00FFFF" />
+                <stop offset="35%" stop-color="#00FFFF" />
+                <stop offset="35%" stop-color="#008000" />
                 <stop offset="54%" stop-color="#008000" />
-                <stop offset="74%" stop-color="#008000" />
-                <stop offset="74%" stop-color="#00FFFF" />
-                <stop offset="83%" stop-color="#00FFFF" />
-                <stop offset="83%" stop-color="#FFC0CB" />
-                <stop offset="100%" stop-color="#FFC0CB" />
-                <linearGradient/>
+                <stop offset="54%" stop-color="#FFFF00" />
+                <stop offset="74%" stop-color="#FFFF00" />
+                <stop offset="74%" stop-color="#F95C0D" />
+                <stop offset="83%" stop-color="#F95C0D" />
+                <stop offset="83%" stop-color="#FF0000" />
+                <stop offset="100%" stop-color="#FF0000" />
+                <linearGradient />
         </defs>
         <g id="O" fill="#0000FF">
-            <rect x="732.2" y="461.3" class="st21" width="6.5" height="6.5"/>
-            <rect x="738.7" y="461.3" class="st21" width="6.5" height="6.5"/>
-            <rect x="738.7" y="467.9" class="st21" width="6.5" height="6.5"/>
-            <rect x="732.2" y="467.9" class="st21" width="6.5" height="6.5"/>
+            <rect x="732.2" y="461.3" class="st21" width="6.5" height="6.5" />
+            <rect x="738.7" y="461.3" class="st21" width="6.5" height="6.5" />
+            <rect x="738.7" y="467.9" class="st21" width="6.5" height="6.5" />
+            <rect x="732.2" y="467.9" class="st21" width="6.5" height="6.5" />
         </g>
         <g id="L" fill="#FFFF00">
             <g>
                 <g>
-                    <rect x="699.9" y="448.3" class="st22" width="6.5" height="6.5"/>
-                    <rect x="699.9" y="448.3" class="st23" width="6.5" height="6.5"/>
+                    <rect x="699.9" y="448.3" class="st22" width="6.5" height="6.5" />
+                    <rect x="699.9" y="448.3" class="st23" width="6.5" height="6.5" />
                 </g>
                 <g>
-                    <rect x="699.9" y="441.8" class="st22" width="6.5" height="6.5"/>
-                    <rect x="699.9" y="441.8" class="st23" width="6.5" height="6.5"/>
+                    <rect x="699.9" y="441.8" class="st22" width="6.5" height="6.5" />
+                    <rect x="699.9" y="441.8" class="st23" width="6.5" height="6.5" />
                 </g>
                 <g>
-                    <rect x="706.4" y="454.8" class="st22" width="6.5" height="6.5"/>
-                    <rect x="706.4" y="454.8" class="st23" width="6.5" height="6.5"/>
+                    <rect x="706.4" y="454.8" class="st22" width="6.5" height="6.5" />
+                    <rect x="706.4" y="454.8" class="st23" width="6.5" height="6.5" />
                 </g>
                 <g>
-                    <rect x="699.9" y="454.8" class="st22" width="6.5" height="6.5"/>
-                    <rect x="699.9" y="454.8" class="st23" width="6.5" height="6.5"/>
+                    <rect x="699.9" y="454.8" class="st22" width="6.5" height="6.5" />
+                    <rect x="699.9" y="454.8" class="st23" width="6.5" height="6.5" />
                 </g>
             </g>
         </g>
         <g id="J" fill="#F95C0D">
             <g>
                 <g>
-                    <rect x="712.9" y="454.8" class="st24" width="6.5" height="6.5"/>
-                    <rect x="712.9" y="454.8" class="st23" width="6.5" height="6.5"/>
+                    <rect x="712.9" y="454.8" class="st24" width="6.5" height="6.5" />
+                    <rect x="712.9" y="454.8" class="st23" width="6.5" height="6.5" />
                 </g>
                 <g>
-                    <rect x="712.9" y="448.3" class="st24" width="6.5" height="6.5"/>
-                    <rect x="712.9" y="448.3" class="st23" width="6.5" height="6.5"/>
+                    <rect x="712.9" y="448.3" class="st24" width="6.5" height="6.5" />
+                    <rect x="712.9" y="448.3" class="st23" width="6.5" height="6.5" />
                 </g>
                 <g>
-                    <rect x="706.4" y="461.3" class="st24" width="6.5" height="6.5"/>
-                    <rect x="706.4" y="461.3" class="st23" width="6.5" height="6.5"/>
+                    <rect x="706.4" y="461.3" class="st24" width="6.5" height="6.5" />
+                    <rect x="706.4" y="461.3" class="st23" width="6.5" height="6.5" />
                 </g>
                 <g>
-                    <rect x="712.9" y="461.3" class="st24" width="6.5" height="6.5"/>
-                    <rect x="712.9" y="461.3" class="st23" width="6.5" height="6.5"/>
+                    <rect x="712.9" y="461.3" class="st24" width="6.5" height="6.5" />
+                    <rect x="712.9" y="461.3" class="st23" width="6.5" height="6.5" />
                 </g>
             </g>
         </g>
         <g id="Z" fill="#FF0000">
             <g>
                 <g>
-                    <rect x="699.9" y="461.3" class="st25" width="6.5" height="6.5"/>
-                    <rect x="699.9" y="461.3" class="st23" width="6.5" height="6.5"/>
+                    <rect x="699.9" y="461.3" class="st25" width="6.5" height="6.5" />
+                    <rect x="699.9" y="461.3" class="st23" width="6.5" height="6.5" />
                 </g>
                 <g>
-                    <rect x="693.4" y="461.3" class="st25" width="6.5" height="6.5"/>
-                    <rect x="693.4" y="461.3" class="st23" width="6.5" height="6.5"/>
+                    <rect x="693.4" y="461.3" class="st25" width="6.5" height="6.5" />
+                    <rect x="693.4" y="461.3" class="st23" width="6.5" height="6.5" />
                 </g>
                 <g>
-                    <rect x="706.4" y="467.9" class="st25" width="6.5" height="6.5"/>
-                    <rect x="706.4" y="467.9" class="st23" width="6.5" height="6.5"/>
+                    <rect x="706.4" y="467.9" class="st25" width="6.5" height="6.5" />
+                    <rect x="706.4" y="467.9" class="st23" width="6.5" height="6.5" />
                 </g>
                 <g>
-                    <rect x="699.9" y="467.9" class="st25" width="6.5" height="6.5"/>
-                    <rect x="699.9" y="467.9" class="st23" width="6.5" height="6.5"/>
+                    <rect x="699.9" y="467.9" class="st25" width="6.5" height="6.5" />
+                    <rect x="699.9" y="467.9" class="st23" width="6.5" height="6.5" />
                 </g>
             </g>
         </g>
         <g id="S" fill="#008000">
             <g>
                 <g>
-                    <rect x="719.4" y="461.3" class="st26" width="6.5" height="6.5"/>
-                    <rect x="719.4" y="461.3" class="st23" width="6.5" height="6.5"/>
+                    <rect x="719.4" y="461.3" class="st26" width="6.5" height="6.5" />
+                    <rect x="719.4" y="461.3" class="st23" width="6.5" height="6.5" />
                 </g>
                 <g>
-                    <rect x="726" y="461.3" class="st26" width="6.5" height="6.5"/>
-                    <rect x="726" y="461.3" class="st23" width="6.5" height="6.5"/>
+                    <rect x="726" y="461.3" class="st26" width="6.5" height="6.5" />
+                    <rect x="726" y="461.3" class="st23" width="6.5" height="6.5" />
                 </g>
                 <g>
-                    <rect x="712.9" y="467.9" class="st26" width="6.5" height="6.5"/>
-                    <rect x="712.9" y="467.9" class="st23" width="6.5" height="6.5"/>
+                    <rect x="712.9" y="467.9" class="st26" width="6.5" height="6.5" />
+                    <rect x="712.9" y="467.9" class="st23" width="6.5" height="6.5" />
                 </g>
                 <g>
-                    <rect x="719.4" y="467.9" class="st26" width="6.5" height="6.5"/>
-                    <rect x="719.4" y="467.9" class="st23" width="6.5" height="6.5"/>
+                    <rect x="719.4" y="467.9" class="st26" width="6.5" height="6.5" />
+                    <rect x="719.4" y="467.9" class="st23" width="6.5" height="6.5" />
                 </g>
             </g>
         </g>
         <g id="T" fill="#FFC0CB">
             <g>
                 <g>
-                    <rect x="680.4" y="454.8" class="st27" width="6.5" height="6.5"/>
-                    <rect x="680.4" y="454.8" class="st23" width="6.5" height="6.5"/>
+                    <rect x="680.4" y="454.8" class="st27" width="6.5" height="6.5" />
+                    <rect x="680.4" y="454.8" class="st23" width="6.5" height="6.5" />
                 </g>
                 <g>
-                    <rect x="673.9" y="454.8" class="st27" width="6.5" height="6.5"/>
-                    <rect x="673.9" y="454.8" class="st23" width="6.5" height="6.5"/>
+                    <rect x="673.9" y="454.8" class="st27" width="6.5" height="6.5" />
+                    <rect x="673.9" y="454.8" class="st23" width="6.5" height="6.5" />
                 </g>
                 <g>
-                    <rect x="686.9" y="454.8" class="st27" width="6.5" height="6.5"/>
-                    <rect x="686.9" y="454.8" class="st23" width="6.5" height="6.5"/>
+                    <rect x="686.9" y="454.8" class="st27" width="6.5" height="6.5" />
+                    <rect x="686.9" y="454.8" class="st23" width="6.5" height="6.5" />
                 </g>
                 <g>
-                    <rect x="680.4" y="461.3" class="st27" width="6.5" height="6.5"/>
-                    <rect x="680.4" y="461.3" class="st23" width="6.5" height="6.5"/>
+                    <rect x="680.4" y="461.3" class="st27" width="6.5" height="6.5" />
+                    <rect x="680.4" y="461.3" class="st23" width="6.5" height="6.5" />
                 </g>
             </g>
         </g>
         <g id="I" fill="#00FFFF">
             <g>
                 <g>
-                    <rect x="680.4" y="467.9" class="st28" width="6.5" height="6.5"/>
-                    <rect x="680.4" y="467.9" class="st23" width="6.5" height="6.5"/>
+                    <rect x="680.4" y="467.9" class="st28" width="6.5" height="6.5" />
+                    <rect x="680.4" y="467.9" class="st23" width="6.5" height="6.5" />
                 </g>
                 <g>
-                    <rect x="674" y="467.9" class="st28" width="6.5" height="6.5"/>
-                    <rect x="674" y="467.9" class="st23" width="6.5" height="6.5"/>
+                    <rect x="674" y="467.9" class="st28" width="6.5" height="6.5" />
+                    <rect x="674" y="467.9" class="st23" width="6.5" height="6.5" />
                 </g>
                 <g>
-                    <rect x="686.9" y="467.9" class="st28" width="6.5" height="6.5"/>
-                    <rect x="686.9" y="467.9" class="st23" width="6.5" height="6.5"/>
+                    <rect x="686.9" y="467.9" class="st28" width="6.5" height="6.5" />
+                    <rect x="686.9" y="467.9" class="st23" width="6.5" height="6.5" />
                 </g>
                 <g>
-                    <rect x="693.4" y="467.9" class="st28" width="6.5" height="6.5"/>
-                    <rect x="693.4" y="467.9" class="st23" width="6.5" height="6.5"/>
+                    <rect x="693.4" y="467.9" class="st28" width="6.5" height="6.5" />
+                    <rect x="693.4" y="467.9" class="st23" width="6.5" height="6.5" />
                 </g>
             </g>
         </g>
@@ -292,7 +414,9 @@
         </g>
     </svg>
 
-    <img id="televisao" src="/Tetris_AG/Tetris.png" alt="">
+    <img id="televisao" src="/Tetris.png">
+    <a href="/tetris.html"><button id="player1"><b>1 Player</b></button></a>
+    <a href="/2Players.html"><button id="player2"><b>2 Player</b></button></a>
 </body>
 
 </html>
